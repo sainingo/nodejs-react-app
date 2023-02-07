@@ -1,8 +1,11 @@
 const express = require('express');
 const mysql = require('mysql');
+const cors = require('cors');
 
 const app = express();
 const port = 8800;
+
+app.use(cors())
 
 app.use(express.json());
 
@@ -69,7 +72,7 @@ app.post('/users', (req, res) => {
         if(!err) {
             // console.log(req.body)
             res.send("Data inserted successfully");
-            db.end();
+            // db.end();
         }
         else {
             console.log("Error in inserting data");
